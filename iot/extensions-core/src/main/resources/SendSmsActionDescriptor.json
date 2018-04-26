@@ -1,0 +1,8 @@
+{
+"configuration":
+	{"dstNum":"","content":"平台发送，二十分钟有效。Test"},
+"name":
+	"smsAction",
+"clazz":
+	"com.comba.server.extensions.core.action.sms.SendSmsAction"
+}

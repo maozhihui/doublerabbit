@@ -1,0 +1,126 @@
+html{
+	height:100%;
+}
+body{
+	background: url(../images/loginbg/23.jpg) no-repeat;
+	font-size: 16px;
+	background-size:cover;
+}
+.form{	
+	background: rgba(255,255,255,0.8);
+    width: 440px;
+    margin: 110px auto;
+    border: 3px solid RGB(1,87,150);
+    box-shadow: 0px 3px 14px #524a4a;
+}
+.form .form-group{
+	position:relative;
+	margin-bottom:20px;
+}
+#login_form{
+	display: block;
+}
+
+.fa{
+	display: inline-block;
+	top: 10px;
+	left: 6px;
+	position: absolute;
+	color: #ccc;
+}
+input[type="text"],
+input[type="password"]{
+	padding-left:26px;
+}
+input[name="email"],
+input[name="rpassword"]{
+	padding-left:29px;
+}
+.checkbox{
+	padding-left:21px;
+}
+#login_btn,
+#smsLogin_btn,
+#register_btn,
+.next_btn,
+.return_btn,
+.confirm_btn{
+    background: #3c8dbc;
+    border-bottom: 3px solid #0078b3;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+}
+.return_btn{
+	background: #cac8c8;
+	border-bottom-color: #a9a9a9;
+}
+#register_btn, 
+.return_btn,
+.next_btn
+{
+	width:100px;
+}
+.form-title{
+	position: relative;
+	height:50px;
+	border-bottom:1px solid #ddd;
+	margin-bottom:30px;
+}
+.form-title .switch {
+    height: 45px;
+    line-height:45px;
+    position: absolute;
+    left: 103px;
+    bottom: 0;
+    font-size: 16px;
+}
+#switch_qlogin{
+	margin-right:70px;
+}
+#switch_bottom {
+    position: absolute;
+    bottom: -1px;
+    _bottom: -2px;
+    border-bottom: 2px solid #848484;
+}
+a.switch_btn_focus,
+a.switch_btn{
+	outline: none;
+	display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    text-decoration:none;
+}
+#btnSendCode{
+    padding: 4px;
+    margin-left: 13px;
+}
+.error{
+	color: #a94442;
+	font-weight: normal;
+	margin-bottom: 0;
+};
+.pw-strength{clear:both;position:relative;top:5px;width:181px;}
+.pw-bar{
+	padding:4px;
+	border:1px solid #ccc;
+}
+.pw-bar-on{position:relative;height:14px;transition:width .5s ease-in;-moz-transition:width .5s ease-in;-webkit-transition:width .5s ease-in;-o-transition: width .5s ease-in;}
+.pw-defule{width:0px;}
+.pw-defule .pw-bar-on{width:0px;} 
+.pw-weak .pw-defule{width:0px;}
+.pw-weak .pw-bar-on{width:60px;background-color:red;}
+.pw-medium .pw-bar-on{width:120px;background-color:yellow;}
+.pw-strong .pw-bar-on{width:181px;background-color:green;}
+.pw-txt{padding-top:2px;width:181px;overflow:hidden;margin-left: 10px;}
+.pw-txt span{color:#707070;float:left;font-size:12px;text-align:center;width:58px;}
+.search_a_submit, .search_a_add, .search_a_check, .search_a_modify, .search_a_delete, .btn_confirm {
+    background: #2795dc;
+    color: white;
+    padding: 5px 25px;
+}
+ .search_a_submit:hover, .search_a_add:hover, .search_a_check:hover, .search_a_modify:hover, .search_a_delete:hover, .btn_confirm:hover {
+    background: #007dff;
+    color: white;
+}

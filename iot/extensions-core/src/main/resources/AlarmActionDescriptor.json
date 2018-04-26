@@ -1,0 +1,8 @@
+{
+  "configuration":
+  {"type":"","status":""},
+  "name":
+  "SendMQAction",
+  "clazz":
+  "com.comba.server.extensions.core.action.mq.SendMQAction"
+}

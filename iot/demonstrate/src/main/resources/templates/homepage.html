@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html style="background:black">
+<head>
+<meta http-equiv="content" content="text/html" charset="utf-8"/>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/tc/plugins/echart/echarts.min.js"></script>
+<script type="text/javascript"  src="https://api.map.baidu.com/api?v=2.0&amp;ak=YWdGplhYjUGQ3GtpKNeuTM2S&amp;s=1"></script>
+<script src="/js/tc/plugins/echart/china.js"></script>
+<script src="/js/common.js"></script>
+<style type="text/css">
+body{
+	color:#fff;
+}
+.title{
+	color: RGB(251,195,84);
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 5px;
+    text-align: center;
+	padding-bottom:10px;
+}
+.border{
+	border:1px dashed #454646;
+	border-bottom:0;
+}
+#mainBarAll,#mainBarCity{
+	width: 100%;
+	height:400px;
+	padding-bottom:10px;
+}
+#toggleMenu{
+	position: fixed;
+	z-index: 1000;
+	left: 45%;
+	padding: 6px 10px;
+	border: 1px solid #fff;
+ 	color: #fff;
+ 	top: 0;
+ 	background: linear-gradient(to top,rgb(33, 87, 183) 0%,rgba(49, 187, 252, 0.18) 100%);
+    border-radius: 3px 3px 27px 27px;
+	font-size: 16px;
+    
+}
+
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece{
+    background-color: RGB(97,160,168);
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+
+
+</style>
+</head>
+<body>
+<div id="toggleMenu">
+	<a href="homepage" style="padding:6px;color:#fff">统计分析</a><a href="fire" style="padding:6px;color:#fff">西宁消防</a>
+</div>
+<div style="float:left;width: 29%;">
+	<div id="mainBarCity" class="border"></div>
+	<div id="mainBarAlert" class="border" style="width: 100%;border-bottom:1px dashed #454646;"></div>
+</div>
+<div style="float:left;width: 41.5%;">
+	<div id="mapBg" style="padding-bottom:10px;background:url('//img//mapBg.png') repeat;border-bottom:1px dashed #454646;position:relative">
+	</div>
+	<div id="logText" style="width:100%;border-bottom:1px dashed #454646;">
+		<div class="title">实时信息</div>
+		<ul id="ulScroll" style="margin:0px;list-style-type:none;height:calc(100% - 50px);overflow:auto;font-size:18px;">
+		</ul>
+	</div>
+</div>
+<div style="float:left;width: 29%;">
+	<div id="mainPie" class="border" style="width:100%;padding-bottom:10px;"></div>
+	<div id="mainLine" class="border" style="width:100%;padding-bottom:10px;"></div>
+	<div id="mainScroll" class="border" style="width:100%;border-bottom:1px dashed #454646;"></div>
+</div>
+<div style="clear:both"></div>
+<script type="text/javascript" src="/js/tc/homepage.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    //]]>
+	var map = new BMap.Map("mapBg"); //初始化地图
+	var items;
+	var firstItem;
+	var points = [];
+	map.centerAndZoom(new BMap.Point(101.74,36.56), 12);//设置中心点和显示级别。中国。
+	
+	map.enableScrollWheelZoom();//滚轮放大缩小。
+</script>  
+</body>
+</html>

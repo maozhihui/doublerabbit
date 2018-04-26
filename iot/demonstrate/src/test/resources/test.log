@@ -1,0 +1,1 @@
+{"devEUI":"ffffff1000000132","adr":true,"fCnt":1088,"rxInfo":[{"mac":"0002e4956e405e5c","time":"2017-08-28T02:26:02.933464Z","timestamp":912346612,"frequency":481900000,"channel":2,"rfChain":0,"crcStatus":1,"codeRate":"4/5","rssi":-89,"loRaSNR":-12.3,"size":17,"dataRate":{"modulation":"LORA","spreadFactor":12,"bandwidth":125}}]}

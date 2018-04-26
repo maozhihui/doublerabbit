@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+        <groupId>com.comba</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>transport</artifactId>
+  </parent>
+
+  <groupId>com.comba.transport</groupId>
+  <artifactId>daikin</artifactId>
+  <packaging>jar</packaging>
+
+  <name>daikin</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+  	  <dependency>
+		  <groupId>com.comba.common</groupId>
+		  <artifactId>transport</artifactId>
+	  </dependency>
+  
+  	<!--commons-lang3-->
+<!--  	<dependency>
+  	  <groupId>org.apache.commons</groupId>
+  	  <artifactId>commons-lang3</artifactId>
+  	  <version>3.3</version>
+	</dependency> -->
+	<!--modbus4j-->
+	<dependency>
+      <groupId>com.infiniteautomation</groupId>
+      <artifactId>modbus4j</artifactId>
+      <version>3.0.3</version>
+	</dependency> 
+	  	 	<!-- https://mvnrepository.com/artifact/org.apache.mina/mina-core -->
+ 		<dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>2.0.16</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+ 		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>	
+		<dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.12</version>
+		</dependency>
+	
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

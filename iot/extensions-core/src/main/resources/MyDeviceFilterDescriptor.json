@@ -1,0 +1,19 @@
+[
+	{
+	"configuration":
+		{"productId":"8a8aeb385d346daf015d34cf06890024","deviceId":"8a8aeb385d35dd88015d360d250d0007"},
+	"name":
+		"DeviceFilter",
+	"clazz":
+		"com.comba.server.extensions.core.filter.DeviceFilter"
+	},
+	
+	{
+	"configuration":
+		{"attributeId":"eeee","value":"500","operator":">"},
+	"name":
+		"DeviceTelemetryFilter",
+	"clazz":
+		"com.comba.server.extensions.core.filter.DeviceTelemetryFilter"
+	}
+]

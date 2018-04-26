@@ -1,0 +1,102 @@
+<!doctype html>
+<html style="background:black">
+<head>
+<meta http-equiv="content" content="text/html" charset="utf-8"/>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/en/plugins/echart/echarts.min.js"></script>
+<script src="/js/en/plugins/echart/china.js"></script>
+<script src="/js/common.js"></script>
+<style type="text/css">
+html{
+	font-family: Arial;
+}
+body{
+	color:#fff;
+}
+.title{
+	color: RGB(251,195,84);
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 5px;
+    text-align: center;
+	padding-bottom:10px;
+}
+.border{
+	border:1px dashed #454646;
+	border-bottom:0;
+}
+#mainBarAll,#mainBarCity{
+	width: 100%;
+	height:400px;
+	padding-bottom:10px;
+}
+#toggleMenu{
+	position: fixed;
+	z-index: 1000;
+	left: 32%;
+	padding: 6px 10px;
+	border: 1px solid #fff;
+ 	color: #fff;
+ 	top: 0;
+ 	background: linear-gradient(to top,rgb(33, 87, 183) 0%,rgba(49, 187, 252, 0.18) 100%);
+    border-radius: 3px 3px 27px 27px;
+    
+    font-size: 16px;
+}
+
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece{
+    background-color: RGB(97,160,168);
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+
+
+</style>
+</head>
+<div id="toggleMenu">
+    <a href="/index" style="padding:6px;color:#fff">index </a><a href="/en/analysis" style="padding:6px;color:#fff">Platform Overview</a><a href="/en/device" style="padding:6px;color:#fff">Device management</a><a href="/en/scene" style="padding:6px;color:#fff">Application display</a>
+	<!-- <a href="javascript:void(0)" onclick="maxsize()"><img src="/img/maxsize.png" width="17px"/></a> -->
+</div>
+<body style="padding:20px 10px;">
+<div style="float:left;width: 29%;">
+	<div id="mainBarAll" class="border" style="border-bottom:0px;"></div>
+	<div id="mainBarCity" class="border"></div>
+	<div id="mainBarAlert" class="border" style="width: 100%;border-bottom:1px dashed #454646;"></div>
+</div>
+<div style="float:left;width: 41.5%;">
+	<div id="mapBg" style="padding-bottom:10px;background:url('//img//mapBg.png') repeat;border-bottom:1px dashed #454646;position:relative">
+		<div style="position: absolute;width:100%;text-align:center;top:30px"><img src="/img/whale_en.png" width="70px" style="margin-right: 10px;
+    border-radius: 33px;background-color: #fff;"/><span style="font-size:25px;line-height:70px;vertical-align: top;font-weight:bold;    color: #56f7e9;
+">Whale IoT</span></div>
+		<div class="title" style="position: absolute;left: 50%;left: 51%;
+   bottom: 40px;margin-left: -79px;">Whale IoT<span id="countAll"></span>/Number of online devices<span id="countCurent"></span></div>
+		<div id="mainMap" style="width:100%;height:100%;"></div>
+	</div>
+	<div id="logText" style="width:100%;border-bottom:1px dashed #454646;">
+		<div class="title">Number of online devices</div>
+		<ul id="ulScroll" style="margin:0px;list-style-type:none;height:calc(100% - 50px);overflow:auto;font-size:18px;">
+		</ul>
+	</div>
+</div>
+<div style="float:left;width: 29%;">
+	<div id="mainPie" class="border" style="width:100%;padding-bottom:10px;"></div>
+	<div id="mainLine" class="border" style="width:100%;padding-bottom:10px;"></div>
+	<div id="mainScroll" class="border" style="width:100%;border-bottom:1px dashed #454646;"></div>
+</div>
+<div style="clear:both"></div>
+<script type="text/javascript" src="/js/en/analysis.js"></script>
+</body>
+</html>

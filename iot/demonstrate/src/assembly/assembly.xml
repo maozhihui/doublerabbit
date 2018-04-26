@@ -1,0 +1,41 @@
+<assembly>
+	<id>assembly</id>
+	<formats>
+		<format>dir</format>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<fileSets>
+		<fileSet>
+			<directory>src/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<fileMode>0755</fileMode>
+		</fileSet>
+
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>/resources</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/config</directory>
+            <outputDirectory>/config</outputDirectory>
+        </fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}/${project.build.finalName}/lib</directory>
+			<outputDirectory>/lib</outputDirectory>
+		</fileSet>
+	</fileSets>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<scope>runtime</scope>
+			<excludes>
+				<exclude>${groupId}:${artifactId}</exclude>
+			</excludes>
+		</dependencySet>
+	</dependencySets>
+</assembly>

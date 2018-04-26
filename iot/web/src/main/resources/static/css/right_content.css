@@ -1,0 +1,56 @@
+html,body{
+	/*overflow:auto;*/
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+html.frame_content{
+	height:calc(100% - 55px);
+}
+body{
+	height:100%;
+}
+#list{
+	border:0;
+}
+
+#list_div table.table{
+	border:1px solid rgb(221, 229, 235);
+    border-top:0;
+}
+#list_div .table > thead > tr > th{
+	border-bottom:0;
+	border-right:1px solid #ddd;
+}
+#list_div .table td{
+	border-right:1px solid #ddd;
+	text-align:center;
+}
+.dataTables_paginate button{
+	margin-right:5px;
+}
+.selectC{
+	width:135px;
+}
+#list{
+	height: calc(100% - 56px);
+	overflow: auto;
+}
+#productForm label{
+	width:145px;
+	text-align: right;
+}
+#productForm form-control{
+	width:290px;
+}
+.form-horizontal .form-group label{
+	text-align:right;
+}
+.form{
+	margin-top:20px;
+}
+.normalForm{
+	margin-top:30px;
+}
+.panel-default {
+    border:0;
+}

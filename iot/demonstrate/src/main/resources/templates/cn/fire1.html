@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="content" content="text/html" charset="utf-8"/>
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="css/tc/device.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/tc/plugins/echart/echarts.min.js"></script>
+<script src="js/common.js"></script>
+<style>
+.title{
+	padding: 10px;background-color: lightblue;
+}
+.innerBody{
+	padding:10px;
+}
+.innerBody > img {
+	width:40px;
+	vertical-align:middle;
+}
+.floatDiv{
+	float:left;
+	width:calc((100% - 48px)/3);
+	border: 1px solid #ccc;
+	margin-right:20px;
+	margin-top:20px;
+}
+</style>
+</head>
+<body>
+<div id="toggleMenu">
+	<a href="homepage" style="padding:6px;color:#fff">统计分析</a><a href="fire" style="padding:6px;color:#fff">西宁消防</a>
+	<!-- <a href="javascript:void(0)" onclick="maxsize()"><img src="/img/maxsize.png" width="17px"/></a> -->
+</div>
+<div id="container">
+	<!--<div id="header">
+		<h3 class="header_title">温室大棚智能控制云平台监控将界面</h3>
+	</div>-->
+	<div id="mainContent">
+		<div id="asideMenu">
+			<div id="menuTitle" style="background-color:#dadad7">
+				<h3  id="myDevice">我的设备</h3>
+			<!--	<p>
+					<button class="device_btn">所有设备</button><button class="device_btn">添加设备</button>
+				</p>-->
+			</div>
+			<ul id="device_list">
+				<li style="/*background: url(./img/menu-active.png) no-repeat scroll right center ;*/background-color:#dadad7;border-bottom:2px solid #fff">
+					智慧消防
+				</li>
+				<ul style="background-color:#dadad7;" id="outerUl">
+					<li><a href="javascript:showZl()" class="menu_title"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备状态总览</span><i class="arrow_right"></i></a></li>
+					<li><a href="javascript:void(0)" class="menu_title"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;消防开关</span><i class="arrow_right"></i></a>
+						<ul class="innerUl" style="display:none">
+							<li><a href="javascript:void(0)" onclick="addActive(this)" class="menu_40_30">开关1</a></li>
+							<li><a href="javascript:void(0)" onclick="addActive(this)" class="menu_41_30">开关2</a></li>
+						</ul>
+					</li>
+			</ul>
+		</div>
+		<div id="splitIcon"><img src="img/icon_left.png" style=" width: 9px;height: 45px;"/></div>
+		<div id="innerContent">
+			<div id="content_header">
+				<h4  class="content_title">采集数据</h4>
+			</div>
+			<div id="content_main">
+				<div class="zlan" style="padding:0px 20px">
+					<div class="floatDiv">
+						<div class="title">消火栓泵控制柜开关</div>
+						<div class="innerBody">手动 <img src="img/on.png"/> <span style="color: #2ca536;font-weight: bold;text-decoration: blink;">自动</span></div>
+					</div>
+					<div class="floatDiv">
+						<div class="title">喷淋泵控制柜开关</div>
+						<div class="innerBody">手动 <img src="img/on.png"/>  <span style="color: #2ca536;font-weight: bold;text-decoration: blink;">自动</span></div>
+					</div>
+					<div class="floatDiv" style="margin-right:0px">
+						<div class="title">联动控制器开关</div>
+						<div class="innerBody"><span style="color: #2ca536;font-weight: bold;text-decoration: blink;">手动</span> <img src="img/off.png"/> 自动</div>
+					</div>
+					<div class="floatDiv">
+						<div class="title">消防栓末端压力(MPa)</div>
+						<div class="innerBody">
+							<div id="mainYl" style="width:100%;height:200px" class="gauge"></div>
+						</div>
+					</div>
+					<div class="floatDiv">
+						<div class="title">消防水箱容积(m&sup3)</div>
+						<div class="innerBody">
+							<div id="mainYj" style="width:100%;height:200px" class="gauge"></div>
+						</div>
+					</div>
+				</div>
+				<ul class="list" style="display:none">
+					<li class="switch">
+						<div class="float_left">
+							<div class="device_identify">
+								<img src="img/switch.png"/><br/>
+								<span class="devName"></span>
+							</div>
+						</div>
+						<div class="float_left">
+							<span>开关</span>
+							<p class="current_state">当前状态：<span class="online">已连接</span></p>
+							<div class="update_time">更新时间：<span class="updateTime"></span></div>
+						</div>
+						<div class="float_left" style="line-height: 75px;"> 
+							<span class="data_number"><img src="img/on.png" width="45px" id="switchState"/></span> 
+						</div>
+						<div class="float_left">
+							<a href="javascript:void(0)" class="analize_line"><i class="fa fa-chevron-down"></i> 历史曲线</a>
+						</div>
+						<div style="clear:both"></div>
+						<div class="echart_cont">
+							<div id="echart_switch" style="width:100%;height:100%;"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+	`	</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/tc/fire.js"></script>
+<script>
+$(function(){
+	$(".menu_title").each(function(){
+		$(this).click(function(){
+			if($(this).next(".innerUl").css("display")=="none"){
+				$(this).next(".innerUl").show();
+				$(this).find("i").removeClass("arrow_right").addClass("arrow_bottom");
+			} else {
+				$(this).next(".innerUl").hide();
+				$(this).find("i").removeClass("arrow_bottom").addClass("arrow_right");
+			}
+		})
+	})
+	//$("#outerUl>li:first-child>ul>li:first-child>a").trigger("click");	
+})
+
+function maxsize(){
+	$("#toggleMenu").slideUp();
+}
+$(".analize_line").each(function(){
+	$(this).click(function(){
+		var echart_cont = $(this).parent().parent().find(".echart_cont");
+		if(echart_cont.css("display")=="none"){
+			echart_cont.show();
+		} else {
+			echart_cont.hide();
+		}
+	})
+})
+$("#splitIcon").bind("click",function(){
+	if($("#asideMenu").css("display")=="none"){
+		$("#asideMenu").show();
+		$(this).css("left","241px");
+		$(">img",$(this)).attr("src","./img/icon_left.png");
+		$("#innerContent").css("marginLeft","251px");
+	} else {
+		$("#asideMenu").hide();
+		$(this).css("left",0);
+		$(">img",$(this)).attr("src","./img/icon_right.png");
+		$("#innerContent").css("marginLeft",0);
+	}
+})
+var thisDev;
+var interval,intervalHy;
+function addActive(target){
+	$(".list").show();
+	$(".zlan").hide();
+	var targets=[];
+	if(interval){
+		clearInterval(interval);
+		clearInterval(intervalHy);
+	}
+	$(".innerUl >li").removeClass("active");
+	$(".innerUl").hide();
+	$(target).parent().addClass("active");
+	$(target).parent().parent().show();
+	$("i.arrow_bottom").removeClass("arrow_bottom").addClass("arrow_right");
+	$("li.active").parent().prev(".menu_title").find("i").removeClass("arrow_right").addClass("arrow_bottom");
+	var thisClass = $(target).attr("class").split("_");
+	thisDev= thisClass[1];
+	thisType = thisClass[2];
+	$(".devName").html($(target).html());
+	//$(".data_number").html(0);
+	$(".list>li").hide();
+	$(".switch").show();
+	targets=["echart_switch"];
+	
+	/*readData(thisDev,thisType);
+	interval = window.setInterval(function(){readData(thisDev,thisType)}, 1000);*/
+	if(thisDev==40){
+		$("#switchState").attr("src","img/on.png");
+	} else {
+		$("#switchState").attr("src","img/off.png");
+	}
+	initChart(targets,thisDev,thisType);
+}
+function showZl(){
+	$(".list").hide();
+	$(".zlan").show();
+	$(".innerUl >li").removeClass("active");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+server:
+  # Server bind address
+  address: "${HTTP_BIND_ADDRESS:0.0.0.0}"
+  # Server bind port
+  port: "${HTTP_BIND_PORT:8080}"
+  jsp-servlet:
+    class-name: org.apache.jasper.servlet.JspServlet
+  error:
+    whitelabel:
+      enabled: false
+# Uncomment the following section to enable ssl
+#  ssl:
+#    key-store: classpath:keystore/keystore.p12
+#    key-store-password: thingsboard
+#    keyStoreType: PKCS12
+#    keyAlias: tomcat
+
+# Plugins configuration parameters
+plugins:
+  # Comma seperated package list used during classpath scanning for plugins
+  scan_packages: "${PLUGINS_SCAN_PACKAGES:com.comba.server.extensions}"
+
+# Device communication protocol parameters
+http:
+  request_timeout: "${HTTP_REQUEST_TIMEOUT:60000}"
+# 注册会话超时时间为120分钟,单位为 milliseconds(毫秒)
+  register_timeout: "${HTTP_REGISTER_TIMEOUT:7200000}"
+
+# Actor system parameters
+actors:
+  session:
+    sync:
+      # Default timeout for processing request using synchronous session (HTTP, CoAP) in milliseconds
+      timeout: "${ACTORS_SESSION_SYNC_TIMEOUT:10000}"
+  plugin:
+    # Default timeout for termination of the plugin actor after it is stopped
+    termination.delay: "${ACTORS_PLUGIN_TERMINATION_DELAY:60000}"
+    # Default timeout for processing of particular message by particular plugin
+    processing.timeout: "${ACTORS_PLUGIN_TIMEOUT:60000}"
+    # Errors for particular actor are persisted once per specified amount of milliseconds
+    error_persist_frequency: "${ACTORS_PLUGIN_ERROR_FREQUENCY:3000}"
+  rule:
+    # Default timeout for termination of the rule actor after it is stopped
+    termination.delay: "${ACTORS_RULE_TERMINATION_DELAY:3000}"
+    # Errors for particular actor are persisted once per specified amount of milliseconds
+    error_persist_frequency: "${ACTORS_RULE_ERROR_FREQUENCY:3000}"
+  statistics:
+    # Enable/disable actor statistics
+    enabled: "${ACTORS_STATISTICS_ENABLED:true}"
+    persist_frequency: "${ACTORS_STATISTICS_PERSIST_FREQUENCY:60000}"
+
+# Cache parameters
+cache:
+  # Enable/disable cache functionality.
+  enabled: "${CACHE_ENABLED:false}"
+  device_credentials:
+    # Default time to store device credentials in cache, in seconds
+    time_to_live: "${CACHE_DEVICE_CREDENTIAL_TTL:3600}"
+    # Maximum size of the map. When maximum size is reached, the map is evicted based on the policy defined.
+    max_size:
+      # Max size policy options:
+      # PER_NODE: Maximum number of map entries in each JVM.
+      # PER_PARTITION: Maximum number of map entries within each partition.
+      # USED_HEAP_SIZE: Maximum used heap size in megabytes for each JVM.
+      # USED_HEAP_PERCENTAGE: Maximum used heap size percentage for each JVM.
+      # FREE_HEAP_SIZE: Minimum free heap size in megabytes for each JVM.
+      # FREE_HEAP_PERCENTAGE: Minimum free heap size percentage for each JVM.
+      policy: "${CACHE_DEVICE_CREDENTIAL_MAX_SIZE_POLICY:PER_NODE}"
+      size: "${CACHE_DEVICE_CREDENTIAL_MAX_SIZE_SIZE:1000000}"
+
+# Check new version updates parameters
+updates:
+  # Enable/disable updates checking.
+  enabled: "${UPDATES_ENABLED:true}"
+
+spring:
+  datasource:
+    url: jdbc:mysql://10.10.107.104:3306/iotstp?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    show-sql: false
+  application:
+    index: iot v1.1
+    name: iot
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+security:
+  basic:
+    enabled: false
+  ignored: /css/**
+
+management:
+  security:
+    enabled: false
+
+# ============================================================================
+# druid\u76f8\u5173\u914d\u7f6e
+# ============================================================================
+filters: stat
+maxActive: 20
+initialSize: 1
+maxWait: 60000
+minIdle: 10
+maxIdle: 15
+timeBetweenEvictionRunsMillis: 60000
+minEvictableIdleTimeMillis: 300000
+validationQuery: SELECT 'x'
+testWhileIdle: true
+testOnBorrow: false
+testOnReturn: false
+maxOpenPreparedStatements: 20
+removeAbandoned: true
+removeAbandonedTimeout: 1800
+logAbandoned: true
+# ============================================================================
+# \u56fd\u9645\u5316\u8bbe\u7f6e
+# ============================================================================
+i18n:
+  locale: zhCN
+
+# ============================================================================
+# application\u4e2d\u6587
+# ============================================================================
+application:
+  domain:
+    packages: com
+    database:
+      type: mysql
+
+node:
+  id: 0
+
+#\u5bfc\u51faexcel\u5b58\u653e\u7684\u5730\u5740
+download:
+  excel:
+    path: load/excel
+#\u6700\u5927\u5141\u8bb8\u5bfc\u51faexcel\u8bb0\u5f55\u6570
+max:
+  allow:
+    export:
+      num: 50000
+
+#\u63d2\u4ef6\u7c7b\u578b
+plugin:
+  types: aa.phone.clazz1=\u624b\u673a\u7c7b\u578b,bb.class=\u77ed\u4fe1\u7c7b\u578b
+filter:
+  types: filter.clazz1=\u8fc7\u6ee4\u56681,filter.class2=\u8fc7\u6ee4\u56682
+process:
+  types: process.clazz1=\u5904\u7406\u56681,process.class2=\u5904\u7406\u56682
+
+#设备参数设置->实时查询，实时设置。命令超时控制,时间单位/s
+device:
+  setting:
+    timeout: 30
+    AuthEnable: false
+
+
+# 代理配置
+proxy:
+  enabled: false
+  host: 179.179.179.50
+  port: 8086
+
+#REST超时配置
+rest:
+  ReadTimeout: 15000
+  ConnectTimeout: 3000
+
+#短信相关配置
+sms:
+  url: http://web.cr6868.com/asmx/smsservice.aspx
+  name: 13928869199
+  pwd: FB890DD1310F40BC076944D5E9AE
+  sign: comba_iot
+#用户导入
+userImport:
+  initPwd: df10ef8509dc176d733d59549e7dbfaf
+
+#手机验证码随机数位数
+phone:
+  codeLength: 6
+
+#开放数据查询接口
+api:
+  dataLimit: 500
+
+#MQTT代理配置
+mqtt:
+  enabled: false
+  userName: wangw
+  pwd: ww1030
+  topic: application
+  subTopic: application/#
+  pushTopic: applicaton/ap
+  qos: 1
+  authEnable: true
+  connecting:
+    timeOut: 10
+  watch:
+    interval: 20
+  uri: tcp://172.16.9.23:1883
+
+feibit:
+  enabled: false
+
+#ActiveMQ配置
+activemq:
+  amqpUrl: amqp://10.10.107.104:5672
+  user: admin
+  password: password
+  topic:
+    alarm: topic://iotfc/ff808081-5f05-ca0f-015f-0a7941e60203/device/status/alarm
+    monitor: topic://iotfc/ff808081-5f05-ca0f-015f-0a7941e60203/device/status/monitor
+
+#固定租户配置
+tenant:
+  id: ff808081-5f05-ca0f-015f-0a7941e60203
+
+# JWT相关配置
+jwt:
+  #自定义头域
+  tokenHeader: X-Authorization
+  #签名私匙
+  secret: mySecret
+  #超时时长（秒）
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: api/v1/login
+      refresh: api/refresh
+      register: api/auth/register

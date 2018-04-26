@@ -1,0 +1,10 @@
+[
+  {
+    "configuration":
+    {"name":"test","did":"8a8aeb385d35dd88015d360d250d0007","expression":"A & B"},
+    "name":
+    "AttributeFilter",
+    "clazz":
+    "com.comba.server.extensions.core.filter.AttributeFilter"
+  }
+]

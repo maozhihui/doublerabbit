@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<appender name="fileLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}\logs/daoTest.log</file>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}\logs/daoTest.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.comba.server.dao" level="DEBUG">
+    	<appender-ref ref="fileLogAppender"/>
+    </logger>
+    <logger name="org.apache.cassandra" level="DEBUG">
+    	<appender-ref ref="fileLogAppender"/>
+    </logger>
+    <logger name="org.cassandraunit" level="DEBUG" >
+    	<appender-ref ref="fileLogAppender"/>
+    </logger>
+    <logger name="org.apache.cassandra" level="DEBUG" >
+    	<appender-ref ref="fileLogAppender"/>
+    </logger>
+    <logger name="com.datastax.driver" level="DEBUG" >
+    	<appender-ref ref="fileLogAppender"/>
+    </logger>
+
+    <root level="WARN">
+        <appender-ref ref="console"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="content" content="text/html" charset="utf-8"/>
+<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="/css/tc/scene.css" rel="stylesheet" type="text/css"/>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/tc/plugins/echart/echarts.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/heatmap.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div id="toggleMenu">
+    <a href="/index" style="padding:6px;color:#fff">首页</a><a href="/cn/analysis" style="padding:6px;color:#fff">平台概貌</a><a href="/cn/device" style="padding:6px;color:#fff">设备管理</a><a href="/cn/scene" style="padding:6px;color:#fff">应用展示</a>
+	<!-- <a href="javascript:void(0)" onclick="maxsize()"><img src="/img/maxsize.png" width="17px"/></a>-->
+</div>
+<div id="container" style="padding:0 20px 20px;height: calc(100% - 20px);">
+	<h4 class="company">京信通信</h4>
+	<div id="map_area">
+		<div id="heatmap" style="position:absolute"></div>
+		<!-- <div style="position:relative"> -->
+		<img class="dot wsd" id="dot_1" src="/img/wd_2.png"/>
+		<!-- <div class="descript" id="descript_1">
+			<div class="tooltip-arrow-out"><div class="tooltip-arrow-in"></div></div>
+			<p>地址：A栋三楼</p>
+			<p>设备状态：正常</p>
+			<p>温度值：30 &#8451; </p>
+		</div> -->
+		<img class="dot wsd" id="dot_3" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_5" src="/img/wd_2.png"/>
+	    <img class="dot wsd" id="dot_7" src="/img/wd_2.png"/>
+	    <img class="dot wsd" id="dot_8" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_9" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_10" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_11" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_12" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_13" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_14" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_15" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_16" src="/img/wd_2.png"/>
+		<img class="dot wsd" id="dot_17" src="/img/wd_2.png"/>
+		<img src="/img/map.jpg" width="100%" id="mapBg"/>
+		<img src="/img/ph.png" style=" position: absolute;top: 47%;width: 15px;left: 60%;"/>
+		<img src="/img/ph.png" style="position: absolute;top: 21%;width: 15px;left: 85%;"/>
+		<img src="/img/pm.png" style="position: absolute;top: 53%;width: 29px;left: 46%;"/>
+		<!--</div>-->
+	     <div id="grad_1" class="grad"></div>
+		<div id="grad_3" class="grad"></div>
+		<div id="grad_5" class="grad"></div>
+		<div id="grad_7" class="grad"></div>
+		<div id="grad_8" class="grad"></div>
+		<div id="grad_9" class="grad"></div>
+		<div id="grad_10" class="grad"></div>
+		<div id="grad_11" class="grad"></div>
+		<div id="grad_12" class="grad"></div>
+		<div id="grad_13" class="grad"></div>
+		<div id="grad_14" class="grad"></div>
+		<div id="grad_15" class="grad"></div>
+		<div id="grad_16" class="grad"></div>
+		<div id="grad_17" class="grad"></div> 
+	</div>
+	<div class="alert_info">
+		<h4 style="color: RGB(47,255,247);margin-top:0px;margin-bottom: 5px;font-size:18px;" id="info_title">园区监测信息
+		</h4>
+		<table id="info_head">
+			<thead>
+				<tr>
+					<td width="35%">时间</td>
+					<td width="20%">设备</td>
+					<td width="15%">等级</td>
+					<td>信息</td>
+				</tr>
+			</thead>
+		</table>
+		<ul id="scrollUl" style="height: 100px;overflow-y: auto;"></ul>
+		<div style="clear:both"></div>
+	</div>
+	<div class="clear:both"></div>
+	<div  class="bottom" style="border: 2px solid RGB(0,77,111);margin-top: 10px;padding-top:10px;border-radius: 30px;">
+			<div style="width:calc(100%/3);float:left">
+				<div  id="barWD" style="width:100%;height:150px"></div>
+			</div>
+			<div style="width:calc(100%/3);float:left">
+				<div  id="lineWD" style="width:100%;height:150px"></div>
+			</div>
+			<div style="width:calc(100%/3);float:left">
+				<div  id="lineSD" style="width:100%;height:150px"></div>
+			</div>
+			 <div style="clear:both"></div>
+			 <div style="width:calc(100%/3);float:left">
+				<div  id="barSD" style="width:100%;height:150px"></div>
+			</div>
+			<div style="width:calc(100%/3);float:left">
+				<div  id="linePM" style="width:100%;height:150px"></div>
+			</div>
+		  
+			<div style="width:calc(100%/3);float:left">
+				<div  id="linePH" style="width:100%;height:150px"></div>
+			</div>
+			<!-- <div style="width:calc(100%/3);float:left">
+				<div  id="lineEG" style="width:100%;height:150px"></div>
+			</div>-->
+		
+		<div style="clear:both"></div>
+	</div>
+</div>
+<script type="text/javascript">
+var chartHeight= $("#container").height()-($(".company").get(0).offsetHeight+4)-($("#map_area").get(0).offsetHeight)-20;
+$(".alert_info").height($("#map_area").height());
+$(".bottom").height(chartHeight+"px");
+$("#lineWD,#lineSD,#linePM,#linePH,#lineEG,#barWD,#barSD").height(chartHeight/2+"px");
+var infoHeight = $(".alert_info").height()-$("#info_head").height() - 42;
+$("#scrollUl").height(infoHeight);
+function maxsize(){
+	$("#toggleMenu").slideUp();
+}
+</script>
+<script type="text/javascript" src="/js/tc/gauge_2.js"></script>
+</body>
+</html>

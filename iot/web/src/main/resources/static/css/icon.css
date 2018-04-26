@@ -1,0 +1,73 @@
+
+.required {
+    background: url('../images/icon/required.png') no-repeat 35px 6px;
+}
+
+.icon-password {
+    background: url('../images/icon/password.png') no-repeat;
+}
+
+.icon-logout {
+    background: url('../images/icon/logout.png') no-repeat;
+}
+
+.icon-home {
+    background: url('../images/icon/home.png') no-repeat;
+}
+
+.icon-welcome {
+    background: url('../images/icon/welcome.png') no-repeat;
+}
+
+.icon-management {
+    background: url('../images/icon/add_server.png') no-repeat;
+}
+
+.icon-source {
+    background: url('../images/icon/source.png') no-repeat;
+}
+
+.icon-privilege {
+    background: url('../images/icon/privilege.png') no-repeat;
+}
+
+.icon-organization {
+    background: url('../images/icon/org.png') no-repeat;
+}
+
+.icon-role {
+    background: url('../images/icon/role.png') no-repeat;
+}
+
+.icon-user {
+    background: url('../images/icon/user.png') no-repeat;
+}
+
+.icon-system {
+    background: url('../images/icon/management.png') no-repeat;
+}
+
+.icon-log {
+    background: url('../images/icon/log.png') no-repeat;
+}
+
+.icon-refresh {
+    background: url('../images/icon/refresh.png') no-repeat;
+}
+
+.tabs-selected .icon-refresh {
+    background: url('../images/icon/refresh-white.png') no-repeat;
+}
+
+.icon-refresh-white {
+    background: url('../images/icon/refresh_white.png') no-repeat;
+}
+
+.icon-company {
+    background: url('../images/icon/company.png') no-repeat;
+}
+
+.icon-department {
+    background: url('../images/icon/department.png') no-repeat;
+}
+

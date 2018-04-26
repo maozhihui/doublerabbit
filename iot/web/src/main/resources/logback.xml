@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!-- 定义公共参数 -->
+    <property name="log.history" value="365" />
+    <property name="log.maxFileSize" value="100MB" />
+    <property name="log.path" value="${catalina.home}/logs" />
+    <property name="log.pattern" value="%d{ISO8601} [%t] %5p %replace(%caller{1}){'\t|Caller.{1}0|\r\n',''} -%msg%n" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 主程序DEBUG日志输出 -->
+    <appender name="debugLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <maxHistory>${log.history}</maxHistory>
+            <!--<totalSizeCap>3GB</totalSizeCap>-->
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 主程序INFO日志输出 -->
+    <appender name="infoLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <maxHistory>${log.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 主程序WARN日志输出 -->
+    <appender name="warnLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/warn.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <maxHistory>${log.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 主程序ERROR日志输出 -->
+    <appender name="errorLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <maxHistory>${log.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+	<appender name="akkaLogAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/akka.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/akka.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <maxHistory>${log.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+	
+    <logger name="com.comba" level="INFO" additivity="false">
+		<appender-ref ref="debugLogAppender"/>
+        <appender-ref ref="infoLogAppender"/>
+        <appender-ref ref="warnLogAppender"/>
+        <appender-ref ref="errorLogAppender"/>
+	</logger>
+
+    <logger name="akka" level="INFO" additivity="false">
+		<appender-ref ref="akkaLogAppender"/>
+	</logger>
+
+    <root level="INFO">
+		<!--<appender-ref ref="STDOUT"/>-->
+    </root>
+
+</configuration>

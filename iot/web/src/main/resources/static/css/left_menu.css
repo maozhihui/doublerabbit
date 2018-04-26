@@ -1,0 +1,222 @@
+.sub_menu{
+    /*margin-left: 10px;*/
+}
+.sub_sub_menu{
+    margin-left: 15px;
+}
+.sub_menu_toggleIcon {
+    margin-left: 30px;
+    color: #6d9cb7;
+}
+.sub_menu a{
+    display:block;
+    padding-left: 10px !important;
+}
+.aside {
+    position: fixed;
+    width: 165px;
+    top:60px;
+    bottom:0px;
+    /*background: rgb(49, 53, 75) none repeat scroll 0% 0%;*/
+    background: #ecf0f5;
+    border-right: 1px solid #cedfea;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    -webkit-font-smoothing: antialiased;
+}
+.main-sidebar,.left-side {
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    z-index: 810;
+    -webkit-transition: -webkit-transform .3s ease-in-out,width .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out,width .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out,width .3s ease-in-out;
+    transition: transform .3s ease-in-out,width .3s ease-in-out
+}
+.sidebar {
+    padding-bottom: 10px
+}
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+.sidebar-menu>li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(244, 248, 251);
+}
+.sidebar-menu>li>a {
+    display: block;
+    padding: 0px;
+    background: #d7d8d8;
+    text-decoration: none;
+}
+.skin-blue .wrapper,.skin-blue .main-sidebar,.skin-blue .left-side {
+    background-color: #222d32
+}
+.skin-blue .sidebar-menu>li>a {
+    border-left: 3px solid transparent;
+    background: #d7d8d8;
+}
+.skin-blue .sidebar a {
+    color: #b8c7ce
+}
+.main-sidebar .sidebar-menu li>a {
+    padding: 0px;
+    text-decoration: none;
+    cursor:pointer;
+}
+.main-sidebar .sidebar-menu li>a:hover{
+    text-decoration:none;
+}
+.main-sidebar .sidebar-menu li>a>i:first-child {
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #6d9cb7;
+    padding: 6px 2px;
+}
+.main-sidebar .sidebar-menu >li>a>i:first-child {
+    background: #cccfd0 ;
+    border-right: 1px solid rgba(244, 248, 251, 0.5);
+    width: 46px;
+    padding: 11px 9px;
+    margin-right:7px;
+}
+.main-sidebar .sidebar-menu li>a>i~span {
+    width: 100px;
+    /*color: #fff;*/
+    color: #557386;
+    font-size:14px;
+    vertical-align: middle;
+}
+
+.main-sidebar,.left-side {
+    /* 	padding-top: 80px */
+}
+
+
+.skin-blue .sidebar-menu>li>a {
+    border-left: 0
+}
+.sidebar-menu>li>a {
+    /* 	padding: 15px; */
+}
+.main-sidebar .sidebar-menu .fa-app-manage,.main-sidebar .sidebar-menu .fa-online-debug,.main-sidebar .sidebar-menu .fa-trigger-manage,.main-sidebar .sidebar-menu .fa-apikey-manage,.main-sidebar .sidebar-menu .fa-develop-manage,.main-sidebar .sidebar-menu .fa-product-manage,.main-sidebar .sidebar-menu .fa-data-template,.main-sidebar .sidebar-menu .fa-device-group,.main-sidebar .sidebar-menu .fa-product-summary {
+    background-image: url(../images/navigation_icon_6f52477.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px
+}
+.main-sidebar .sidebar-menu .fa-product-summary {
+    background-position: -96px -96px
+    /*background-position: -64px -96px*/
+}
+.main-sidebar .sidebar-menu li:hover .fa-product-summary,.main-sidebar .sidebar-menu .active .fa-product-summary {
+    background-position: -96px -96px
+}
+.main-sidebar .sidebar-menu .fa-product-manage {
+    background-position: -32px -96px
+    /*background-position: 0 -96px*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-product-manage,.main-sidebar .sidebar-menu .active .fa-product-manage {
+    background-position: -32px -96px
+}
+
+.main-sidebar .sidebar-menu .fa-apikey-manage {
+    background-position: -96px 0
+    /*background-position: -32px 0*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-apikey-manage,.main-sidebar .sidebar-menu .active .fa-apikey-manage {
+    background-position: -96px 0
+}
+
+.main-sidebar .sidebar-menu .fa-trigger-manage {
+    background-position: -128px -32px
+    /*background-position: -128px 0*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-trigger-manage,.main-sidebar .sidebar-menu .active .fa-trigger-manage {
+    background-position: -128px -32px
+}
+
+.main-sidebar .sidebar-menu .fa-app-manage {
+    background-position: -32px -32px
+    /*background-position: 0 -32px*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-app-manage,.main-sidebar .sidebar-menu .active .fa-app-manage {
+    background-position: -32px -32px
+}
+
+.main-sidebar .sidebar-menu .fa-develop-manage {
+    background-position: -32px -64px
+    /*background-position: 0 -64px*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-develop-manage,.main-sidebar .sidebar-menu .active .fa-develop-manage {
+    background-position: -32px -64px
+}
+.main-sidebar .sidebar-menu >li:hover> a{
+    /*background: #c3c5c5;*/
+    background: #cccfd0;
+    font-weight: bold;
+}
+.main-sidebar .sidebar-menu >li> a.inactives{
+    background: #bfc2c3;
+    font-weight: bold;
+}
+.main-sidebar .sidebar-menu >li:hover> a> i:first-child{
+    background: #94a2ab;
+    color:white;
+}
+.main-sidebar .sidebar-menu >li> a.inactives> i:first-child {
+    background: #94a2ab;
+    color:white;
+}
+.sub_menu li a{
+    display: block;
+}
+
+.sub_menu li a:hover{
+    background-color: #cbcbe2;
+    font-weight: bold;
+}
+.sub_menu li a.active{
+    background-color: #cbcbe2;
+    font-weight: bold;
+}
+
+.main-sidebar .sidebar-menu .fa-device-group {
+    background-position: 0 0
+    /*background-position: -64px -64px*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-device-group,.main-sidebar .sidebar-menu .active .fa-device-group {
+    background-position: 0 0
+}
+
+.main-sidebar .sidebar-menu .fa-online-debug {
+    background-position: -96px -64px
+    /*background-position: -96px -32px*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-online-debug,.main-sidebar .sidebar-menu .active .fa-online-debug {
+    background-position: -96px -64px
+}
+
+.main-sidebar .sidebar-menu .fa-data-template {
+    background-position: -64px -32px
+    /*background-position: -64px 0*/
+}
+
+.main-sidebar .sidebar-menu li:hover .fa-data-template,.main-sidebar .sidebar-menu .active .fa-data-template {
+    background-position: -64px -32px
+}
